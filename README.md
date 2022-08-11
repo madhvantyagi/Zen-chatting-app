@@ -11,8 +11,8 @@
     {
       Front-End: ReactJS or (EJS), CSS, SASS, JavaScript, GSAP, WebGL, other technologies can be used as well.
 
-      Back-End: NodeJS, ExpressJS (BackEnd Framework), Socket.io (for P2P messaging), webRTC(Real Time Commmunication for Video, PeerJS, OpenCV),
-      other technologies can be used too.
+      Back-End: NodeJS, ExpressJS (BackEnd Framework), Socket.io (for P2P messaging), webRTC(Real Time Commmunication for Video,
+      PeerJS, OpenCV), other technologies can be used too.
 
       Database: MongoDB, Redis(Maybe)
     }
@@ -36,7 +36,7 @@
 
 <hr>
 
-    //
+    /*
     It's a big project so it gonna take a huge amount of time, but we will try to do as fast as we can, if we do good planning and split the work,
     we can do it really fast.Also if you have other ideas to add more features, you can write about them here
-    //
+    */
