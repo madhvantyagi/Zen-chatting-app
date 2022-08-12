@@ -1,9 +1,11 @@
 # Zen-chatting-app
 
 ### motto 
+
     We will try to create a chatting application for fun with different functionalites like emotion detection,
     showing the stastics of the users who intrested in you, privacy chatting and video calling, different levels,
     programming api to help with codes and so much else ...
+
 
 
 ### Technologies 
@@ -25,8 +27,10 @@
       },
 
       {
+
         Second: [ Better UI (colors, amazing effects, good responsiveness, real-time animations , easy to understandUI) 
                   adding video calling functionality, statistical properties , private chat(no DB), **record(video calls)LAST TO DO** ]  
+
       },
 
       {
@@ -35,6 +39,7 @@
     }
 
 <hr>
+
 
     /*
     It's a big project so it gonna take a huge amount of time, but we will try to do as fast as we can, 
