@@ -1,0 +1,25 @@
+{
+  "name": "zen-chatting-app",
+  "version": "1.0.0",
+  "description": "This is a Social Media for GenZ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishant-ai/Zen-chatting-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishant-ai/Zen-chatting-app/issues"
+  },
+  "homepage": "https://github.com/nishant-ai/Zen-chatting-app#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongod": "^2.0.0",
+    "peerjs": "^1.4.7",
+    "socket.io": "^4.5.1"
+  }
+}
