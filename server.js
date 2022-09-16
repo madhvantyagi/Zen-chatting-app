@@ -5,15 +5,20 @@ backend server file:
 */
 
 // import modules
+
 const express = require("express");
+const app = express();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 // import routes
 const homeRoute = require("./routes/homeRoute");
-
+//import Routes
+require("./model/database/connection")
+// const schema=require("./model/userSchema")
+app.use(require("./router/auth"));
 // Server Config
-const app = express();
+
 const server = createServer(app);
 app.use(cors());
 app.use(express.static("public"));
@@ -21,7 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 // config CORS for React FrontEnd
 const io = new Server(server, {
   cors: {
-    origin: "http://127.0.0.1:3002",
+    origin: "http://localhost:3000",
   },
 });
 
