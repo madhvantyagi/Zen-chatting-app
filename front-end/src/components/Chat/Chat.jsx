@@ -7,15 +7,19 @@ import { useEffect } from "react";
 function Chat() {
   const socket = useContext(SocketContext);
   const [message, setMessage] = useState(null);
+  const [value , setValue]=useState(0);
 
   // run everytime "message" (the input field) changes.
   const messageChange = (event) => {
     setMessage(event.target.value);
+    setValue(c=>c+1);
+    console.log(value);
   };
 
   // message sending to backend on form submit.
   const sendMessage = (event) => {
     event.preventDefault();
+ 
     socket.emit("message", message);
     // set message-box empty
     document.querySelector(".MessageInput").value = "";
@@ -25,12 +29,13 @@ function Chat() {
   useEffect(() => {
     socket.on("show-message", (message) => {
       // DOM Manipulation
+      console.log("value",value);
       const chatBox = document.querySelector(".ChatBox");
       const div = document.createElement("div");
       div.innerHTML = `<p>${message}</p>`;
       chatBox.appendChild(div);
     });
-  }, [socket]);
+  },[socket] );
 
   return (
     <div className="ChatBox">
