@@ -12,6 +12,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 // import routes
 const homeRoute = require("./routes/homeRoute");
+const { uri, be_port } = require("./be_vals.js");
 
 // Server Config
 const app = express();
@@ -22,18 +23,18 @@ app.use(express.urlencoded({ extended: false }));
 // config CORS for React FrontEnd
 const io = new Server(server, {
   cors: {
-    origin: "http://127.0.0.1:3002",
+    origin: uri,
   },
 });
 
 // DB Config
-const mongoDB =
-  "mongodb+srv://zenHotDamn:feng-shui@cluster0.5ubnnhe.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.once("connected", () => {
-  console.log("Mongo Connected!");
-});
+// const mongoDB =
+//   "mongodb+srv://zenHotDamn:feng-shui@cluster0.5ubnnhe.mongodb.net/?retryWrites=true&w=majority";
+// mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+// const db = mongoose.connection;
+// db.once("connected", () => {
+//   console.log("Mongo Connected!");
+// });
 
 // Routes
 app.use("/", homeRoute);
@@ -47,7 +48,7 @@ io.on("connection", (socket) => {
 });
 
 // Listen Express App
-const PORT = 8000;
+const PORT = be_port;
 server.listen(PORT, () => {
   console.log(`listening @ Port: ${PORT}`);
 });

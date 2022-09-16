@@ -10,9 +10,9 @@ import { SocketContext, socket } from "./context/socket";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <SocketContext.Provider value={socket}>
-    
+    <React.StrictMode>
       <App />
-  
+    </React.StrictMode>
   </SocketContext.Provider>
 );
 
