@@ -5,31 +5,12 @@ backend server file:
 */
 
 // import modules
-
 const express = require("express");
 const app = express();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-const mongoose = require("mongoose");
-// import routes
-const homeRoute = require("./routes/homeRoute");
-//import Routes
-require("./model/database/connection");
-// const schema=require("./model/userSchema")
-app.use(require("./router/auth"));
-// Server Config
-
-const server = createServer(app);
-app.use(cors());
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
-// config CORS for React FrontEnd
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-  },
-});
+const { be_port, uri } = require("./be_vals.js");
 
 // DB Config
 // const mongoDB =
@@ -40,8 +21,23 @@ const io = new Server(server, {
 //   console.log("Mongo Connected!");
 // });
 
-// Routes
-app.use("/", homeRoute);
+// models
+require("./models/database/connection");
+
+// routes
+app.use(require("./routes/auth"));
+
+// Server Config
+const server = createServer(app);
+app.use(cors());
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
+// config CORS for React FrontEnd
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
 
 // Socket IO
 io.on("connection", (socket) => {

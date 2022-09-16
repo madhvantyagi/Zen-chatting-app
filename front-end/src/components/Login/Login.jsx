@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Login.css";
 import { uri } from "../../context/fe_vals.js";
 
 export default function Login({ showChat }) {
@@ -21,7 +20,7 @@ export default function Login({ showChat }) {
     let name = document.querySelector(".Input2");
 
     console.log(gmail.value.split("@")[1]);
-    if (gmail.value.split("@")[1] == "gmail.com" || name) {
+    if (gmail.value.split("@")[1] === "gmail.com" || name) {
       //will make an axios function to pass the request to the server
       // var bodyFormData = new FormData();
       // bodyFormData.append(gmail.value, name.value);

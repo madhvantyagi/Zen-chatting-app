@@ -1,10 +1,10 @@
 const express = require("express");
-const User = require("../model/userSchema");
+const User = require("../models/userSchema");
 const router = express.Router();
 
 router.post("/user/create", (req, res) => {
-  const name= req.body.name;
-  const email= req.body.email;
+  const name = req.body.name;
+  const email = req.body.email;
   console.log(name + " " + email);
   if (!name || !email) {
     return res.send("Invalid username or email");
