@@ -9,6 +9,7 @@ const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const mongoose = require("mongoose");
 // import routes
 const homeRoute = require("./routes/homeRoute");
 
@@ -25,6 +26,15 @@ const io = new Server(server, {
   },
 });
 
+// DB Config
+const mongoDB =
+  "mongodb+srv://zenHotDamn:feng-shui@cluster0.5ubnnhe.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+db.once("connected", () => {
+  console.log("Mongo Connected!");
+});
+
 // Routes
 app.use("/", homeRoute);
 
@@ -32,7 +42,7 @@ app.use("/", homeRoute);
 io.on("connection", (socket) => {
   socket.on("message", (message) => {
     console.log(message);
-    io.emit("show-message", message);
+    io.emit("message", message);
   });
 });
 
