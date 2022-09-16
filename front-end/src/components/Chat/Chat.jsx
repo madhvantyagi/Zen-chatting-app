@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 function Chat() {
   const socket = useContext(SocketContext);
+
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
 
