@@ -1,0 +1,22 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ChatBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+}
+
+.MessageInput {
+  padding: 7px 5px;
+  width: 20vw;
+}
+
+.MessageSendButton {
+  padding: 7px 5px;
+}

@@ -28,22 +28,23 @@ function Chat() {
   });
 
   return (
-    <div className="ChatBox">
-      <form onSubmit={sendChat}>
-        <input
-          value={message}
-          onChange={(event) => {
-            setMessage(event.target.value);
-          }} // on message input, we take the value in input box and set state.
-          className="MessageInput"
-          placeholder="Enter Message"
-          type={"text"}
-        ></input>
-        <button type="submit" className="MessageSendButton">
-          Send Message
-        </button>
-      </form>
-
+    <div className="Container">
+      <div className="ChatBox">
+        <form onSubmit={sendChat}>
+          <input
+            value={message}
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }} // on message input, we take the value in input box and set state.
+            className="MessageInput"
+            placeholder="Enter Message"
+            type={"text"}
+          ></input>
+          <button type="submit" className="MessageSendButton">
+            Send Message
+          </button>
+        </form>
+      </div>
       <div>
         {chat.map((msg, idx) => (
           <p key={idx}>{msg}</p>

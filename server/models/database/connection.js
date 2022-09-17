@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 const DB =
-  "mongodb+srv://Nishant:Madhav@cluster0.phda5fr.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://zenHotDamn:feng-shui@cluster0.pzvvlgw.mongodb.net/?retryWrites=true&w=majority";
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
-    // useCreateIndex:true,
     useUnifiedTopology: true,
-    // useFindAndModify:false
   })
   .then(() => {
     console.log(`connection succesful`);

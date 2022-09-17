@@ -3,17 +3,21 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+// react-router-dom
+import { BrowserRouter } from "react-router-dom";
 
 // socket-client config
 import { SocketContext, socket } from "./context/socket";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <SocketContext.Provider value={socket}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </SocketContext.Provider>
+  <React.StrictMode>
+    <SocketContext.Provider value={socket}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SocketContext.Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -10,32 +10,26 @@ const app = express();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const { be_port, uri } = require("./be_vals.js");
-
-// DB Config
-// const mongoDB =
-//   "mongodb+srv://zenHotDamn:feng-shui@cluster0.5ubnnhe.mongodb.net/?retryWrites=true&w=majority";
-// mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-// const db = mongoose.connection;
-// db.once("connected", () => {
-//   console.log("Mongo Connected!");
-// });
-
-// models
-require("./models/database/connection");
-
-// routes
-app.use(require("./routes/auth"));
 
 // Server Config
 const server = createServer(app);
 app.use(cors());
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// routes
+app.use("/user", require("./routes/user")); // user routes
+
+// DB Config
+require("./models/database/connection");
+
 // config CORS for React FrontEnd
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: uri,
   },
 });
 
