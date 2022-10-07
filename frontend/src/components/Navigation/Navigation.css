@@ -1,0 +1,12 @@
+.Navigation {
+  display: flex;
+  justify-content: center;
+  padding: 1vh 2vw;
+  background: rgb(183, 183, 183);
+}
+
+.Link {
+  color: rgb(47, 47, 198);
+  text-decoration: none;
+  margin: 0 3vw;
+}

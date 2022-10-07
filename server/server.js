@@ -6,38 +6,43 @@ backend server file:
 
 // import modules
 const express = require("express");
+const app = express();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
-// import routes
-const homeRoute = require("./routes/homeRoute");
+const bodyParser = require("body-parser");
+const { be_port, uri } = require("./be_vals.js");
 
 // Server Config
-const app = express();
 const server = createServer(app);
 app.use(cors());
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// routes
+app.use("/user", require("./routes/user")); // user routes
+
+// DB Config
+require("./models/database/connection");
+
 // config CORS for React FrontEnd
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: uri,
   },
 });
-
-// Routes
-app.use("/", homeRoute);
 
 // Socket IO
 io.on("connection", (socket) => {
   socket.on("message", (message) => {
     console.log(message);
-    io.emit("show-message", message);
+    io.emit("message", message);
   });
 });
 
 // Listen Express App
-const PORT = 8000;
+const PORT = be_port;
 server.listen(PORT, () => {
   console.log(`listening @ Port: ${PORT}`);
 });
